@@ -7,3 +7,5 @@ class Guitarist extends Musician {
         this.funFact = "The more strings you have, the better you are";
     }
 }
+
+module.exports={Guitarist};

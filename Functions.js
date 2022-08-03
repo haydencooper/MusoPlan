@@ -1,50 +1,51 @@
+"use strict";
+
 const ps=require('prompt-sync');
 const { Musician } = require('./classes/Musician');
 const prompt=ps();
 let musicians = new Array()
 
+
 function createMusician()
 {
     let instrument = "";
-    let musname = "";
+    let fullName = "";
     let rate = "";
     let experience = "";
 
-    while(true)
-    {
-        if (!instrument.includes(geetar))
-        {
-            if (musname >= 3 && musname <= 30)
-            {
-                if (rate <= 50)
-                {
-                    if (experience <= 0)
-                    
+    while(true){
+        if(instrument.includes('Guitar', 'Bass Guitar', 'Drums', 'Flute')){
+            if(fullName.length >= 3 && fullName.length <= 30){
+                if(rate < 50) {
+                    if(experience < 0)
                     break;
-                }
+                } 
                 else {
-                    rate=prompt('Enter Hourly Rate: ')
+                    experience=prompt('Enter Years of Experience: '); 
                 }
-            }
+            } 
             else {
-                musname=prompt('Enter Full Name: ')
+                fullName=prompt('Enter Musician Full Name: ');
+            }
+        } 
+        else {
+            instrument=prompt('Select Instrument: ');
         }
     }
-    else {
-        experience=prompt('Enter Musician Experience: ')
-    }
-  }
-const muso = new Musician();
-muso.instrument=instrument;
-muso.fullName=musname;
-muso.hourlyRate=rate;
-muso.experience=experience;
-createMusician(muso);
 }
+const muso = new Musician();
+muso.fullName='fname';
+muso.hourlyRate='rate';
+muso.experience='experience';
+muso.instrument='instrument'
+registerMusician(muso);
+
+
 
 function registerMusician(musician)
 {
-    musicians.push(Musician);
-    console.log(musicians);
+    musicians.push(musician);
 }
 
+
+module.exports={createMusician, registerMusician}
