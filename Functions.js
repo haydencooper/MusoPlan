@@ -1,51 +1,39 @@
-"use strict";
+const ps = require("prompt-sync");
+const { Musician } = require("./classes/Musician");
+const prompt = ps();
+const { Troupe } = require("./classes/Troupe");
+var musicians = new Array();
 
-const ps=require('prompt-sync');
-const { Musician } = require('./classes/Musician');
-const prompt=ps();
-let musicians = new Array()
+function createMusician() {
+  let instrument = "";
+  let experience = -1;
+  let fullName = "";
+  let hourlyRate = -1;
 
+   while (true) {
+     if (fullName.length >= 3 && fullName.length <= 30) {
+        if (instrument.includes("Guitarist", "Bassist", "Percussionist", "Flautist")) {
+          if (experience >= 0) { 
+             if (hourlyRate >= 50) {
+           break;
 
-function createMusician()
-{
-    let instrument = "";
-    let fullName = "";
-    let rate = "";
-    let experience = "";
-
-    while(true){
-        if(instrument.includes('Guitar', 'Bass Guitar', 'Drums', 'Flute')){
-            if(fullName.length >= 3 && fullName.length <= 30){
-                if(rate < 50) {
-                    if(experience < 0)
-                    break;
-                } 
-                else {
-                    experience=prompt('Enter Years of Experience: '); 
-                }
-            } 
-            else {
-                fullName=prompt('Enter Musician Full Name: ');
+            } else {
+             hourlyRate = parseFloat(prompt("Enter Musician Hourly Rate: "));
             }
-        } 
-        else {
-            instrument=prompt('Select Instrument: ');
-        }
+         } else {
+          experience = parseFloat(prompt("Enter Musician Experience: "));
+       }
+     } else {
+        instrument = prompt("Enter Musician Instrument: ");
+      }
+} else {
+    fullName = prompt("Enter Musician Name: ");
     }
-}
-const muso = new Musician();
-muso.fullName='fname';
-muso.hourlyRate='rate';
-muso.experience='experience';
-muso.instrument='instrument'
-registerMusician(muso);
-
-
-
-function registerMusician(musician)
-{
+  }
+    const musician = new Musician(instrument, fullName, hourlyRate, experience);
     musicians.push(musician);
-}
+    console.log(musician); 
+  }
 
 
-module.exports={createMusician, registerMusician}
+module.exports = { createMusician };

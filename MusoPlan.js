@@ -17,7 +17,6 @@ var choice = 0;
       if (choice==1) {
         // Create Musician
         Functions.createMusician();
-        choice = 0;
       } else if (choice==2) {
         // Create Troupe
         choice = 0;
