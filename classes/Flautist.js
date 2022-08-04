@@ -1,5 +1,6 @@
 class Flautist extends Musician {
-  constructor(name, instrument, experience, rate) {
-    super(name, instrument, experience, rate);
+  constructor(instrument, fullName, hourlyRate, experience) {
+    super(instrument, fullName, hourlyRate, experience);
   }
+
 }
