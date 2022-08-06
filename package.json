@@ -1,0 +1,22 @@
+{
+  "name": "musoplan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "MusoPlan.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydencooper/MusoPlan.git"
+  },
+  "author": "Hayden Cooper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haydencooper/MusoPlan/issues"
+  },
+  "homepage": "https://github.com/haydencooper/MusoPlan#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
