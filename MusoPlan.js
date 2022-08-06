@@ -2,8 +2,6 @@
 
 const ps=require('prompt-sync');
 const prompt=ps();
-const {Musician} = require("./classes/Musician.js");
-const {Guitarist} = require("./classes/Guitarist.js")
 const Functions = require("./Functions.js")
 var choice = 0;
 

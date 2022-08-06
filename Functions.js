@@ -1,20 +1,21 @@
 const ps = require("prompt-sync");
 const { Musician } = require("./classes/Musician");
+const { Guitarist } = require("./classes/Guitarist");
 const prompt = ps();
 const { Troupe } = require("./classes/Troupe");
 var musicians = new Array();
 
-function createMusician() {
-  let instrument = getInstrument();
-  let experience = -1;
+
+ function createMusician() {
+  let instrument = "";
+  let yearsPlaying = -1;
   let fullName = "";
   let hourlyRate = -1;
-  const validOptions = [...Array(nOptions).keys()].map(e => (e+1).toString()); // ['1', 2, 3, 4]
 
    while (true) {
      if (fullName.length >= 3 && fullName.length <= 30) {
-        if (!validOptions.includes(input)) {
-          if (experience >= 0) { 
+        if (instrument.includes('Guitar', 'Bass', 'Drums', 'Flute')) {
+          if (yearsPlaying >= 0) { 
              if (hourlyRate >= 50) {
            break;
 
@@ -23,7 +24,7 @@ function createMusician() {
              console.log("\n Invalid hourly rate. Please enter a valid hourly rate.\n");
             }
          } else {
-          experience = parseFloat(prompt("Enter Musician Experience: "));
+          yearsPlaying = parseFloat(prompt("Enter Musician Experience: "));
           console.log("\n Invalid experience. Please enter a valid experience.\n");
        }
      } else {
@@ -34,33 +35,28 @@ function createMusician() {
     console.log("\n Invalid name. Please enter a valid name.\n");
     }
   }
-    const musician = new Musician(instrument, fullName, hourlyRate, experience);
-    musicians.push(musician);
-    console.log(musician); 
+  switch (instrument) {
+    case "Guitar":
+      // Guitarist
+      return new Guitarist(fullName, yearsPlaying, hourlyRate, instrument);
+    case "Bass":
+      // Bass
+      return new Bassist(fullName, yearsPlaying, hourlyRate, instrument);
+    case "Drums":
+      // Drums
+      return new Percussionist(fullName, yearsPlaying, hourlyRate, instrument);
+    case "Flute":
+      // Flute
+      return new Flautist(fullName, yearsPlaying, hourlyRate, instrument);
+    case undefined:
+      console.log('Invalid instrument. Please enter a valid instrument.');
+  }
+
   }
 
   // 
   
-  // switch (musicianTypeIndex) {
-  //   case "1":
-  //     // Guitarist
-  //     return new Guitarist(name, yearsPlaying, hourlyRate);
-  //   case "2":
-  //     // Bass
-  //     return new Bassist(name, yearsPlaying, hourlyRate);
-  //   case "3":
-  //     // Drums
-  //     return new Percussionist(name, yearsPlaying, hourlyRate);
-  //   case "4":
-  //     // Flute
-  //     return new Flautist(name, yearsPlaying, hourlyRate);
-  //   default:
-  //     // Somehow the user managed to bypass the checks from get user musician type so throw error
-  //     throw new Error(
-  //       `Uknown musician type input: ${musicianTypeIndex}, occurred for create musician`
-  //     );
-  // }
-
+  
 
 
 

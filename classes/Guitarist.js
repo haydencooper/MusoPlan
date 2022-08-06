@@ -1,11 +1,11 @@
 const { Musician } = require("./Musician");
-
-
 class Guitarist extends Musician {
-    constructor(instrument, fullName, hourlyRate, experience) {
-        super(instrument, fullName, hourlyRate, experience);
-        this.instrument = "Guitarist";
-    }
+  constructor(fullName, yearsPlaying, hourlyRate) {
+    super(fullName, yearsPlaying, hourlyRate);
+    this.musicianTypeName = "Guitarist";
+    this.instrumentName = "Guitar";
+    this.funFact = "The more strings you have, the better you are";
+  }
 }
 
 module.exports={Guitarist};

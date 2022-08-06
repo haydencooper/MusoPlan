@@ -1,3 +1,4 @@
+
 const { Musician } = require("./Musician");
 class Bassist extends Musician {
     constructor(instrument, fullName, hourlyRate, experience) {
