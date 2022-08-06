@@ -1,4 +1,3 @@
-
 class Musician {
     constructor(instrument, fullName, hourlyRate, experience) {
         this.instrument = instrument;
@@ -10,4 +9,4 @@ class Musician {
 
 
 
-module.exports={Musician};
+module.export={Musician};
