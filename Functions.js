@@ -115,22 +115,30 @@ function createTroupe() {
   }
 }
 
-function addMusicianToTroupe(everyMusician, everyTroupe) {
-  if(everyMusician.length === 0 || everyTroupe.length === 0) {
+function addMusicianToTroupe(everyMusician, everyTroupe) { // every Musician is an array of Musician objects, everyTroupe is an array of Troupe objects  
+  if(everyMusician.length === 0 || everyTroupe.length === 0) { // if there are no musicians or no troupes, return an error message
     return
   } 
-  const musicianNames = everyMusician.map((musician) => {return musician.fullName})
+  const musicianNames = everyMusician.map((musician) => {return musician.fullName}) // create an array of all the musician names
   const troupeNames = everyTroupe.map((troupe) => {return troupe.name}) // converts the array of musicians to an array of the names of the musicians
-  let userInputMusicianName = "";
-  let userInputTroupeName = "";
+  let userInputMusicianName = ""; // create a variable to store the name of the musician to be added to the troupe
+  let userInputTroupeName = ""; // create a variable to store the name of the troupe to which the musician will be added
   while(true) {
     if(musicianNames.includes(userInputMusicianName)) {
-      if(troupeNames.includes(userInputTroupeName));
+      if(troupeNames.includes(userInputTroupeName)) {
+        for(let i = 0; i < everyMusician.length; i++)
+          if(everyMusician[i].fullName === userInputMusicianName)
+            for(let uwu = 0; uwu < everyTroupe.length; i++)
+              if(everyTroupe[uwu].name === userInputTroupeName)
+      } else {
+        userInputTroupeName = prompt("Enter Troupe Name: ");
+      }
+      
     
-    }else{
-      userInputMusicianName = prompt("Enter Musician Name: ");
+    } else {
+      userInputMusicianName = prompt("Enter Musician Name: "); 
     } 
   }
 
 }
-module.exports = { createMusician, createTroupe };
+module.exports = { createMusician, createTroupe, addMusicianToTroupe };

@@ -20,30 +20,24 @@ var troupe = [];
       } else if (choice==2) {
         // Create Troupe
         troupe.push(Functions.createTroupe());
-        choice = 0;
       } else if (choice==3) {
         // Add musician
-        choice = 0;
       } else if (choice==4) {
         // Summary - troupe
-        choice = 0;
       } else if (choice==5) {
         // Detailed description - troupe
-        choice = 0;
       } else if (choice==6) {
         // Calc cost deploying troupe n hours
-        choice = 0;
       } else if (choice==7) {
         // Read troupe names from file
-        choice = 0;
       } else if (choice==8) {
         // Detailed description of all saved troupes
-        choice = 0;
       } else if (choice==9) {
         // Quit Program
         break;
         // Uknown input error, passed validation checks somehow too
       }
+      choice = 0;
     }
 
 
