@@ -4,6 +4,7 @@ const ps=require('prompt-sync');
 const prompt=ps();
 const Functions = require("./Functions.js")
 var choice = 0;
+var musicians = [];
 
     while (true) {
       if(choice==0)
@@ -14,7 +15,7 @@ var choice = 0;
       
       if (choice==1) {
         // Create Musician
-        Functions.createMusician();
+        musicians.push(Functions.createMusician());
       } else if (choice==2) {
         // Create Troupe
         choice = 0;
