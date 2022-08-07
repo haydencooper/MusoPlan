@@ -5,6 +5,7 @@ const prompt=ps();
 const Functions = require("./Functions.js")
 var choice = 0;
 var musicians = [];
+var troupe = [];
 
     while (true) {
       if(choice==0)
@@ -18,6 +19,7 @@ var musicians = [];
         musicians.push(Functions.createMusician());
       } else if (choice==2) {
         // Create Troupe
+        troupe.push(Functions.createTroupe());
         choice = 0;
       } else if (choice==3) {
         // Add musician
