@@ -16,12 +16,12 @@ var troupe = [];
       
       if (choice==1) {
         // Create Musician
-        musicians.push(Functions.createMusician());
+        musicians.push(Functions.createMusician()); // Add musician to array
       } else if (choice==2) {
         // Create Troupe
-        troupe.push(Functions.createTroupe());
+        troupe.push(Functions.createTroupe()); // Add the troupe to the array of troupes
       } else if (choice==3) {
-        // Add musician
+        Functions.addMusician(musicians, troupe); // Add musician to troupe
       } else if (choice==4) {
         // Summary - troupe
       } else if (choice==5) {

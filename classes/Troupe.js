@@ -5,6 +5,21 @@
       this.genre = genre; // rock, jazz, pop
       this.musicians = []; // max len = 5
     }
+      countMusicians() {
+      const musicianTypesCount = [0, 0, 0, 0]; 
+      this.musicians.forEach((musician) => {
+        if (musician.instrumentName === "Guitar") {
+          musicianTypesCount[0]++;
+        } else if (musician.instrumentName === "Bass") {
+          musicianTypesCount[1]++;
+        } else if (musician.instrumentName === "Drums") {
+          musicianTypesCount[2]++;
+        } else if (musician.instrumentName === "Flute") {
+          musicianTypesCount[3]++;
+        }
+      });
+      return musicianTypesCount;
+    }
 }
 
 module.exports={Troupe};
