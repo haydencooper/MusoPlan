@@ -142,15 +142,30 @@ function addMusicianToTroupe(everyMusician, everyTroupe) { // every Musician is 
       userInputMusicianName = prompt("Enter Musician Name: "); 
     } 
   }
-
-function getTroupeRate() { // create a function to get the rate of the troupe
-  let troupeRate = 0; // create a variable to store the rate of the troupe
-  for(let i = 0; i < everyTroupe.length; i++) { // loop through the array of troupes
-    for(let x = 0; x < everyTroupe[i].musicians.length; x++) { // loop through the array of musicians
-      troupeRate += everyTroupe[i].musicians[x].hourlyRate; // add the hourly rate of the musician to the rate of the troupe
-    }
-  }
-  return troupeRate; // return the rate of the troupe
 }
 
-module.exports = { createMusician, createTroupe, addMusicianToTroupe, getTroupeRate }; // export the functions so they can be used in other files
+function summariseTroupe(troupe) { // everyTroupe is an array of Troupe objects
+  if(troupe.musicians.length === 0) { // if there are no troupes, return an error message
+    return `\
+    Troupe Name: ${troupe.name}
+    Number of Musicians: 0
+    Rate of the Troupe: ${troupe.getTroupeRate()}
+    Genre of the Troupe ${troupe.genre}
+    Minimum Duration: ${troupe.duration}`;
+  }
+  return `\
+  Troupe Name: ${troupe.name}
+  Number of Musicians: ${troupe.getMusicianCount()}
+  Rate of the Troupe: ${troupe.getTroupeRate()}
+  Genre of the Troupe ${troupe.genre}
+  Minimum Duration: ${troupe.duration}`;
+
+}
+function dTroupeSummary(troupe) {
+   return `\
+   ${summariseTroupe(troupe)}
+   Musician Introduction: 
+   ${troupe.getMusicianIntroductions()}`
+}
+
+module.exports = { createMusician, createTroupe, addMusicianToTroupe, getTroupeRate, summariseTroupe, dTroupeSummary }; // export the functions so they can be used in other files

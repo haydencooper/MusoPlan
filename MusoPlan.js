@@ -24,10 +24,12 @@ var troupe = [];
         Functions.addMusician(musicians, troupe); // Add musician to troupe
       } else if (choice==4) {
         // Summary - troupe
+        Functions.summaryTroupe(troupe); // Provide a summary of a troupe
       } else if (choice==5) {
         // Detailed description - troupe
       } else if (choice==6) {
-        // Calc cost deploying troupe n hours
+        // Calc cost deploying troupe and hours
+
       } else if (choice==7) {
         // Read troupe names from file
       } else if (choice==8) {

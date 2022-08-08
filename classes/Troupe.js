@@ -20,6 +20,24 @@
       });
       return musicianTypesCount;
     }
+    getTroupeRate() {
+      let troupeRate = 0;
+      for (let i = 0; i < this.musicians.length; i++) {
+        troupeRate += this.musicians[i].hourlyRate
+      }
+      return troupeRate;
+    }
+    getMusicianCount() {
+      const musicianCount = this.countMusicians();
+      return `Guitarists: ${musicianCount[0]} Bassists: ${musicianCount[1]} Drummers: ${musicianCount[2]} Flautists: ${musicianCount[3]}`;
+    }
+    getMusicianIntroductions() {
+      let returnString = '\n';
+      for (let i = 0; i < this.musicians.length; i++){
+        returnString += this.musicians[i].introductionLine()+'\n';
+      }
+      return returnString
+    }
 }
 
 module.exports={Troupe};
