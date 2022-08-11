@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 const ps = require("prompt-sync");
 const { Musician } = require("./classes/Musician");
@@ -8,6 +8,9 @@ const { Flautist } = require("./classes/Flautist");
 const { Percussionist } = require("./classes/Percussionist");
 const { Troupe } = require("./classes/Troupe");
 const prompt = ps();
+
+
+
 
 
 function createMusician() {  // create a new musician object
@@ -69,6 +72,7 @@ function createTroupe() { // create a new troupe object
   let name = ""; // create a variable to store the name of the troupe
   let duration = -1; // create a variable to store the duration of the troupe
   let genre = ""; // create a variable to store the genre of the troupe
+
   
   while(true) {
     
@@ -116,23 +120,24 @@ function createTroupe() { // create a new troupe object
 }
 
 function addMusicianToTroupe(everyMusician, everyTroupe) { // every Musician is an array of Musician objects, everyTroupe is an array of Troupe objects  
-  if(everyMusician.length === 0 || everyTroupe.length === 0) { // if there are no musicians or no troupes, return an error message
-    return
+  if(!everyMusician || !everyTroupe) { // if there are no musicians or no troupes, return an error message
   } 
-  const musicianNames = everyMusician.map((musician) => {return musician.fullName}) // create an array of all the musician names
-  const troupeNames = everyTroupe.map((troupe) => {return troupe.name}) // converts the array of musicians to an array of the names of the musicians
+  const musicianNames = everyMusician.map((musicians) => {return musicians.fullName}) // create an array of all the musician names
+  const troupeNames = everyTroupe.map((troupes) => {return troupes.name}) // converts the array of musicians to an array of the names of the musicians
   let userInputMusicianName = ""; // create a variable to store the name of the musician to be added to the troupe
   let userInputTroupeName = ""; // create a variable to store the name of the troupe to which the musician will be added
+  console.log(JSON.stringify(everyMusician, null, '\n'));
+  console.log(JSON.stringify(everyTroupe, null, '\n'));
   while(true) { // while the user has not entered a valid name, keep asking for a name
     if(musicianNames.includes(userInputMusicianName)) { // if the name is valid, break out of the loop
       if(troupeNames.includes(userInputTroupeName)) { 
         for(let i = 0; i < everyMusician.length; i++) // loop through the array of musicians
           if(everyMusician[i].fullName === userInputMusicianName)
             for(let x = 0; x < everyTroupe.length; i++)
-              if(everyTroupe[x].name === userInputTroupeName);
+              if(everyTroupe[x].groupName === userInputTroupeName);
                 everyTroupe[x].musicians.push(everyMusician[i]); // add the musician to the troupe
-                break;
-      
+                return
+          
       } else {
         userInputTroupeName = prompt("Enter Troupe Name: ");
       }
@@ -140,12 +145,14 @@ function addMusicianToTroupe(everyMusician, everyTroupe) { // every Musician is 
     
     } else {
       userInputMusicianName = prompt("Enter Musician Name: "); 
-    } 
+    }
   }
 }
 
+
+
 function summariseTroupe(troupe) { // everyTroupe is an array of Troupe objects
-  if(troupe.musicians.length === 0) { // if there are no troupes, return an error message
+  if(troupes.musicians.length === 0) { // if there are no troupes, return an error message
     return `\
     Troupe Name: ${troupe.name}
     Number of Musicians: 0
@@ -168,4 +175,17 @@ function dTroupeSummary(troupe) {
    ${troupe.getMusicianIntroductions()}`
 }
 
-module.exports = { createMusician, createTroupe, addMusicianToTroupe, getTroupeRate, summariseTroupe, dTroupeSummary }; // export the functions so they can be used in other files
+function getHourlyRate() {
+  return this.musicians.length === 0
+  ? 0
+  : this.musicians
+      .map((musician) => {
+        return musician.hourlyRate;
+      })
+      .reduce((previousValue, currentValue) => {
+        return previousValue + currentValue;
+      });
+}
+
+
+module.exports = { createMusician, createTroupe, addMusicianToTroupe, summariseTroupe, dTroupeSummary, getHourlyRate }; // export the functions so they can be used in other files

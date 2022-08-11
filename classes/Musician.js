@@ -4,8 +4,7 @@ class Musician {
       this.fullName = fullName;
       this.yearsPlaying = yearsPlaying;
       this.hourlyRate = hourlyRate;
-      this.instrument = "";
-      this.funFact = "";
+      this.funFact = ""; 
     }
     /* Introduction line stating:
       - Name

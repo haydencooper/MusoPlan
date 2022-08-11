@@ -1,11 +1,13 @@
-"use strict";
+'use strict';
 
 const ps=require('prompt-sync');
 const prompt=ps();
 const Functions = require("./Functions.js")
 var choice = 0;
 var musicians = [];
-var troupe = [];
+var troupes = [];
+
+
 
     while (true) {
       if(choice==0)
@@ -16,19 +18,24 @@ var troupe = [];
       
       if (choice==1) {
         // Create Musician
-        musicians.push(Functions.createMusician()); // Add musician to array
+        musicians.push(Functions.createMusician());
+        console.log(musicians); // Add musician to array
       } else if (choice==2) {
         // Create Troupe
-        troupe.push(Functions.createTroupe()); // Add the troupe to the array of troupes
+        troupes.push(Functions.createTroupe());
+        console.log(troupes);// Add the troupe to the array of troupes
       } else if (choice==3) {
-        Functions.addMusician(musicians, troupe); // Add musician to troupe
+        // Add musician to troupe
+        Functions.addMusicianToTroupe(musicians, troupes)
       } else if (choice==4) {
         // Summary - troupe
-        Functions.summaryTroupe(troupe); // Provide a summary of a troupe
+        Functions.summariseTroupe(); // Provide a summary of a troupe
       } else if (choice==5) {
         // Detailed description - troupe
+        Functions.dTroupeSummary(troupe);
       } else if (choice==6) {
         // Calc cost deploying troupe and hours
+        Functions.getHourlyRate()
 
       } else if (choice==7) {
         // Read troupe names from file
