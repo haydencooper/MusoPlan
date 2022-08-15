@@ -119,24 +119,30 @@ function createTroupe() { // create a new troupe object
   }
 }
 
-function addMusicianToTroupe(everyMusician, everyTroupe) { // every Musician is an array of Musician objects, everyTroupe is an array of Troupe objects  
+function addMusicianToTroupe(everyMusician, everyTroupe) { 
+  // every Musician is an array of Musician objects, everyTroupe is an array of Troupe objects  
   if(!everyMusician || !everyTroupe) { // if there are no musicians or no troupes, return an error message
   } 
   const musicianNames = everyMusician.map((musicians) => {return musicians.fullName}) // create an array of all the musician names
   const troupeNames = everyTroupe.map((troupes) => {return troupes.name}) // converts the array of musicians to an array of the names of the musicians
   let userInputMusicianName = ""; // create a variable to store the name of the musician to be added to the troupe
   let userInputTroupeName = ""; // create a variable to store the name of the troupe to which the musician will be added
-  console.log(JSON.stringify(everyMusician, null, '\n'));
-  console.log(JSON.stringify(everyTroupe, null, '\n'));
   while(true) { // while the user has not entered a valid name, keep asking for a name
     if(musicianNames.includes(userInputMusicianName)) { // if the name is valid, break out of the loop
       if(troupeNames.includes(userInputTroupeName)) { 
-        for(let i = 0; i < everyMusician.length; i++) // loop through the array of musicians
-          if(everyMusician[i].fullName === userInputMusicianName)
-            for(let x = 0; x < everyTroupe.length; i++)
-              if(everyTroupe[x].groupName === userInputTroupeName);
-                everyTroupe[x].musicians.push(everyMusician[i]); // add the musician to the troupe
-                return
+        for(let i = 0; i < everyMusician.length; i++) {
+          if(everyMusician[i].fullName === userInputMusicianName){
+            for(let x = 0; x < everyTroupe.length; x++) {
+              if(everyTroupe[x].name === userInputTroupeName) {
+                everyTroupe[x].assignedMusicians.push(everyMusician[i]); // add the musician to the troupe
+                return;
+              }
+
+            }
+
+          }
+
+        }
           
       } else {
         userInputTroupeName = prompt("Enter Troupe Name: ");
@@ -151,8 +157,8 @@ function addMusicianToTroupe(everyMusician, everyTroupe) { // every Musician is 
 
 
 
-function summariseTroupe(troupe) { // everyTroupe is an array of Troupe objects
-  if(troupes.musicians.length === 0) { // if there are no troupes, return an error message
+function summariseTroupe(troupes) { // everyTroupe is an array of Troupe objects
+  if (troupes.musicians.length === 0) { // if there are no troupes, return an error message
     return `\
     Troupe Name: ${troupe.name}
     Number of Musicians: 0
@@ -188,4 +194,4 @@ function getHourlyRate() {
 }
 
 
-module.exports = { createMusician, createTroupe, addMusicianToTroupe, summariseTroupe, dTroupeSummary, getHourlyRate }; // export the functions so they can be used in other files
+module.exports = {createMusician, createTroupe, addMusicianToTroupe, summariseTroupe, dTroupeSummary, getHourlyRate}; // export the functions so they can be used in other files
