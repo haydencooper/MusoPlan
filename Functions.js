@@ -161,7 +161,7 @@ function addMusicianToTroupe(everyMusician, everyTroupe) {
 
 
 
-function tSummary (everyTroupe) { // print the summary of the troupe
+function troupeSummary (everyTroupe) { // print the summary of the troupe
   if (!everyTroupe) { 
   }
   const troupeNames = everyTroupe.map((troupes) => {return troupes.name}) // create an array of the names of the troupes
@@ -220,23 +220,27 @@ function getHourlyRate(everyTroupe) { // print the hourly rate of the troupe
 
     function writeFile(troupes) { // write the troupes to a file
     const fs = require('fs'); // require the fs module
-    const filePath = prompt(`Enter file output name: `); // ask for the name of the file to be written to
+    const filePath = prompt(`Enter file name (file will be created.): `); // ask for the name of the file to be written to
     const content = Array.from(troupes.values()) // convert the troupes to an array
       .map((troupe) => troupe.detailedSummary()) // map the array to the detailed summary of the troupes
       .join("\n"); // join the array to a new line
     fs.writeFileSync(filePath+`.txt`, content, "utf8"); // write the content to the file
   }
-  function readFile() { // read the troupes from a file
-    const fs = require('fs'); // require the fs module  
-    let filepath = prompt('Enter File Name (to be read): ') // ask for the name of the file to be read
-
-    let troupeNames; 
-    troupeNames = fs.readFileSync(`${filepath}.txt`, 'utf8').split('\r\n'); // read the file and split the lines into an array
-    
-    // Now you are able to access the data here
-    for (const element of troupeNames) { // loop through the array of troupes
-        console.log(element); // print the troupes
-    }
+// Read a list of troupe names to be populated from a file
+function readFile(troupes) {
+  const fs = require('fs'); // require the fs module
+  const filePath = prompt(`Enter file name: `); // ask for the name of the file to be read
+  const content = fs.readFileSync(`${filePath}`+`.txt`, "utf8"); // read the file
+  const lines = content.split("\n"); // split the file into lines
+  for (let i = 0; i < lines.length; i++) { // loop through the lines
+    const line = lines[i]; // get the line
+    const troupe = new Troupe(line); // create a new troupe with the line as the name
+    troupes.push(troupe.name, troupe);
   }
+  console.log(`${lines.length} troupe(s) read from ${filePath}`); // print the number of troupes read from the file
+}
 
-module.exports = {createMusician, createTroupe, addMusicianToTroupe, tSummary, detailedSummary, getHourlyRate, writeFile, readFile}; // export the functions so they can be used in other files
+
+module.exports = {createMusician, createTroupe, addMusicianToTroupe, troupeSummary, detailedSummary, getHourlyRate, writeFile, readFile}; // export the functions so they can be used in other files
+
+

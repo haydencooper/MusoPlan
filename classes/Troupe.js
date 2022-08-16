@@ -26,16 +26,16 @@
       for (let i = 0; i < this.assignedMusicians.length; i++) { // For each musician in the assignedMusicians array
         troupeRate += this.assignedMusicians[i].hourlyRate * this.minDuration; // Add the hourly rate of the musician times the minimum duration to troupeRate
       }
-      return troupeRate; // Return the troupeRate
+      return ` Cost of Deploying ${this.name} For ${this.minDuration} Hours: $${troupeRate}`; // Return the troupeRate
     }
     getMusicianCount() { // Returns the number of musicians in the troupe
       const musicianCount = this.countMusicians(); // Each index corresponds to Guitarist, Bassist, Percussionist, Flautist
       return `Guitarists: ${musicianCount[0]} Bassists: ${musicianCount[1]} Drummers: ${musicianCount[2]} Flautists: ${musicianCount[3]}`; 
     }
-    getMusicianIntroductions() { // Returns the musician introductions for the troupe
-      let returnString = '\n'; // Initialize returnString to an empty string
-      for (let i = 0; i < this.assignedMusicians.length; i++){ // For each musician in the assignedMusicians array
-        returnString += this.assignedMusicians[i].musicianIntroduction()+'\n'; 
+    getMusicianIntroductions() {
+      let returnString = '\n';
+      for (let i = 0; i < this.assignedMusicians.length; i++){
+        returnString += this.assignedMusicians[i].musicianIntroduction()+'\n';
       }
       return returnString
     }
@@ -57,7 +57,7 @@
   
     detailedSummary() { // Returns a detailed summary of the troupe
       return `${this.overviewSummary()}\nMusician introductions\n${ 
-        this.assignedMusicians.length === 0 ? 'No musicians assigned' : this.getMusicianIntroductions()
+        this.assignedMusicians.length === 0
           ? "" 
           : this.assignedMusicians // Returns the musician introductions for the troupe
               .map((musician) => musician.musicianIntroduction()) 
