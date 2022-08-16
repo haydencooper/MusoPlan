@@ -6,18 +6,11 @@ class Musician {
       this.hourlyRate = hourlyRate;
       this.funFact = ""; 
     }
-    /* Introduction line stating:
-      - Name
-      - instrument
-      - years playing
-      - hourly rate
-      - interesting fact (see below)
-    */
-    introductionLine() {
-      return `Hi! My name is ${this.fullName} and I'm a ${this.musicianTypeName}.\
-  I've been playing the ${this.instrumentName} for ${this.yearsPlaying} years. \
-  I charge $${this.hourlyRate} per hour to hire. \
-  A fact I always tell people about my instrument is: '${this.funFact}'\
+    musicianIntroduction() {
+      return `Hello there, my name is ${this.fullName} and I'm a ${this.musicianTypeName}.\
+  I currently play the ${this.instrumentName} and I have ${this.yearsPlaying} years of experience. \
+  It costs $${this.hourlyRate} per hour to hire me. \
+  A fun fact about my instrument is: '${this.funFact}'\
   \n`;
     }
   }

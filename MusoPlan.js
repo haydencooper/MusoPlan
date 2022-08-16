@@ -2,6 +2,8 @@
 
 const ps=require('prompt-sync');
 const prompt=ps();
+const fs = require('fs')
+fs.readFileSync('package.json', 'utf8')
 const Functions = require("./Functions.js")
 const {Troupe} = require("./classes/Troupe");
 let choice = 0;
@@ -17,28 +19,23 @@ const troupes = [];
       choice=prompt('Enter your choice [1,2,3,4,5,6,7,8,9]')
       
       if (choice==1) {
-        // Create Musician
-        musicians.push(Functions.createMusician());
-      } else if (choice==2) {
-        // Create Troupe
-        troupes.push(Functions.createTroupe());
+         musicians.push(Functions.createMusician());// Create Musician
+      } else if (choice==2) {        
+        troupes.push(Functions.createTroupe()); // Create Troupe
       } else if (choice==3) {
-        // Add musician to troupe
-        Functions.addMusicianToTroupe(musicians,troupes);
+       Functions.addMusicianToTroupe(musicians,troupes); // Add Musician to Troupe
       } else if (choice==4) {
-        // Summary - troupe
-        Functions.tSummary(troupes)
+       Functions.tSummary(troupes)   // Troupe Summary
       } else if (choice==5) {
-        // Detailed description - troupe
-        Functions.detailedSummary(troupes);
+       Functions.detailedSummary(troupes);   // Detailed Troupe Summary
       } else if (choice==6) {
-        // Calc cost deploying troupe and hours
-        Functions.getHourlyRate(troupes)
-
+      Functions.getHourlyRate(troupes)   // Deployment cost and Hourly Rate
       } else if (choice==7) {
-        // Read troupe names from file
+      // Detailed description of all saved troupes
+      Functions.writeFile(troupes)
       } else if (choice==8) {
-        // Detailed description of all saved troupes
+        // Read troupe names from file
+      Functions.readFile()
       } else if (choice==9) {
         // Quit Program
         break;

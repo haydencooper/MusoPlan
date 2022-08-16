@@ -44,6 +44,7 @@ function createMusician() {  // create a new musician object
   switch (userInputInstrument) { // switch statement to create the appropriate musician object based on the instrument
     case "1": 
       // Guitarist
+      console.log('Successfully created Guitarist!');
       return new Guitarist( 
         fullName,
         yearsPlaying,
@@ -51,9 +52,11 @@ function createMusician() {  // create a new musician object
         );
     case "2":
       // Bass
+      console.log('Successfully created Bassist!')
       return new Bassist(fullName, yearsPlaying, hourlyRate);
     case "3":
       // Drums
+      console.log('Successfully created Percussionist!')
       return new Percussionist(
         fullName,
         yearsPlaying,
@@ -61,6 +64,7 @@ function createMusician() {  // create a new musician object
       );
     case "4":
       // Flute
+      console.log('Successfully created Flautist!')
       return new Flautist(fullName, yearsPlaying, hourlyRate);
     default:
       throw new Error("Invalid instrument");
@@ -214,4 +218,25 @@ function getHourlyRate(everyTroupe) {
   }
 }
 
-module.exports = {createMusician, createTroupe, addMusicianToTroupe, tSummary, detailedSummary, getHourlyRate}; // export the functions so they can be used in other files
+    function writeFile(troupes) {
+    const fs = require('fs');
+    const filePath = prompt(`Enter file output name: `);
+    const content = Array.from(troupes.values())
+      .map((troupe) => troupe.detailedSummary())
+      .join("\n");
+    fs.writeFileSync(filePath+`.txt`, content, "utf8");
+  }
+  function readFile() {
+    const fs = require('fs');
+    let filepath = prompt('Enter File Name (to be read): ')
+
+    let troupeNames;
+    troupeNames = fs.readFileSync(`${filepath}.txt`, 'utf8').split('\r\n');
+    
+    // Now you are able to access the data here
+    for (const element of troupeNames) {
+        console.log(element);
+    }
+  }
+
+module.exports = {createMusician, createTroupe, addMusicianToTroupe, tSummary, detailedSummary, getHourlyRate, writeFile, readFile}; // export the functions so they can be used in other files

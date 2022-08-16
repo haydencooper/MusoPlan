@@ -35,22 +35,22 @@
     getMusicianIntroductions() {
       let returnString = '\n';
       for (let i = 0; i < this.assignedMusicians.length; i++){
-        returnString += this.assignedMusicians[i].introductionLine()+'\n';
+        returnString += this.assignedMusicians[i].musicianIntroduction()+'\n';
       }
       return returnString
     }
     overviewSummary() {
-      const musicianTypesCount = this.countMusicians(); // Each index corresponds to Guitarist, bassist, percussionist, flautist
+      const musicianTypesCount = this.countMusicians(); // Each index corresponds to Guitarist, Bassist, Percussionist, Flautist
       return (
-        `Troupe: ${this.name}` +
+        `Troupe Name: ${this.name}` +
         `\n` +
-        `Has: ${musicianTypesCount[0]} Guitarists, ${musicianTypesCount[1]} Bassists, ${musicianTypesCount[2]} Percussionists, ${musicianTypesCount[3]} Flautists` +
+        `Musicians: ${musicianTypesCount[0]} Guitarists, ${musicianTypesCount[1]} Bassists, ${musicianTypesCount[2]} Percussionists, ${musicianTypesCount[3]} Flautists` +
         `\n` +
-        `Genre: ${this.genre}` +
+        `Troupe Genre: ${this.genre}` +
         `\n` +
-        `Min booking duration: ${this.minDuration}` +
+        `Minimum Booking Duration: ${this.minDuration}` +
         `\n` +
-        `Hourly rate: ${this.getHourlyRate()}` +
+        `Hourly Rate: ${this.getHourlyRate()}` +
         `\n`
       );
     }
@@ -60,7 +60,7 @@
         this.assignedMusicians.length === 0
           ? ""
           : this.assignedMusicians
-              .map((musician) => musician.introductionLine())
+              .map((musician) => musician.musicianIntroduction())
               .join("\n")
       }`;
     }
