@@ -149,93 +149,93 @@ function addMusicianToTroupe(everyMusician, everyTroupe) {
         }
           
       } else {
-        userInputTroupeName = prompt("Enter Troupe Name: ");
+        userInputTroupeName = prompt("Enter Troupe Name: "); // if the name is not valid, ask for a new name
       }
       
     
     } else {
-      userInputMusicianName = prompt("Enter Musician Name: "); 
+      userInputMusicianName = prompt("Enter Musician Name: ");  // if the name is not valid, ask for a new name
     }
   }
 }
 
 
 
-function tSummary (everyTroupe) {
-  if (!everyTroupe) {
+function tSummary (everyTroupe) { // print the summary of the troupe
+  if (!everyTroupe) { 
   }
-  const troupeNames = everyTroupe.map((troupes) => {return troupes.name})
+  const troupeNames = everyTroupe.map((troupes) => {return troupes.name}) // create an array of the names of the troupes
   let inputTroupe = "";
   while (true) {
-    if (troupeNames.includes(inputTroupe)) {
-      for (let i = 0; i < everyTroupe.length; i++) {
-        if (everyTroupe[i].name === inputTroupe) {
-          console.log(everyTroupe[i].overviewSummary());
+    if (troupeNames.includes(inputTroupe)) { // if the name is valid, break out of the loop
+      for (let i = 0; i < everyTroupe.length; i++) { // loop through the array of troupes
+        if (everyTroupe[i].name === inputTroupe) { // if the name of the troupe matches the name entered by the user, print the summary of the troupe
+          console.log(everyTroupe[i].overviewSummary()); // print the summary of the troupe
           return
         }
       }
     } else {
-      inputTroupe = prompt("Enter Troupe Name: ");
+      inputTroupe = prompt("Enter Troupe Name: "); // if the name is not valid, ask for a new name
     }
   }
 }
 
-function detailedSummary (everyTroupe) {
-  if (!everyTroupe) {
-  }
-  const troupeNames = everyTroupe.map((troupes) => {return troupes.name})
-  let inputTroupe = "";
-  while (true) {
-    if (troupeNames.includes(inputTroupe)) {
-      for (let i = 0; i < everyTroupe.length; i++) {
-        if (everyTroupe[i].name === inputTroupe) {
-          console.log(everyTroupe[i].detailedSummary());
+function detailedSummary (everyTroupe) { // print the detailed summary of the troupe
+  if (!everyTroupe) {  // if there are no troupes, return an error message
+  }  
+  const troupeNames = everyTroupe.map((troupes) => {return troupes.name}) // create an array of the names of the troupes
+  let inputTroupe = ""; // create a variable to store the name of the troupe
+  while (true) { // while the user has not entered a valid name, keep asking for a name
+    if (troupeNames.includes(inputTroupe)) { // if the name is valid, break out of the loop
+      for (let i = 0; i < everyTroupe.length; i++) { // loop through the array of troupes
+        if (everyTroupe[i].name === inputTroupe) { // if the name of the troupe matches the name entered by the user, print the detailed summary of the troupe
+          console.log(everyTroupe[i].detailedSummary()); // print the detailed summary of the troupe
           return
         }
       }
     } else {
-      inputTroupe = prompt("Enter Troupe Name: ");
+      inputTroupe = prompt("Enter Troupe Name: "); // if the name is not valid, ask for a new name
     }
   }
 }
 
-function getHourlyRate(everyTroupe) {
-  if (!everyTroupe) {
-  }
-  const troupeNames = everyTroupe.map((troupes) => {return troupes.name})
-  let inputTroupe = "";
-  while (true) {
-    if (troupeNames.includes(inputTroupe)) {
-      for (let i = 0; i < everyTroupe.length; i++) {
-        if (everyTroupe[i].name === inputTroupe) {
-          console.log(everyTroupe[i].getHourlyRate());
+function getHourlyRate(everyTroupe) { // print the hourly rate of the troupe
+  if (!everyTroupe) { // if there are no troupes, return an error message
+  } 
+  const troupeNames = everyTroupe.map((troupes) => {return troupes.name})   // create an array of the names of the troupes
+  let inputTroupe = ""; // create a variable to store the name of the troupe
+  while (true) { // while the user has not entered a valid name, keep asking for a name
+    if (troupeNames.includes(inputTroupe)) { // if the name is valid, break out of the loop
+      for (let i = 0; i < everyTroupe.length; i++) { // loop through the array of troupes
+        if (everyTroupe[i].name === inputTroupe) { // if the name of the troupe matches the name entered by the user, print the hourly rate of the troupe
+          console.log(everyTroupe[i].getTroupeRate()); // print the hourly rate of the troupe
           return
         }
       }
     } else {
-      inputTroupe = prompt("Enter Troupe Name: ");
+      inputTroupe = prompt("Enter Troupe Name: "); // if the name is not valid, ask for a new name
     }
   }
 }
 
-    function writeFile(troupes) {
-    const fs = require('fs');
-    const filePath = prompt(`Enter file output name: `);
-    const content = Array.from(troupes.values())
-      .map((troupe) => troupe.detailedSummary())
-      .join("\n");
-    fs.writeFileSync(filePath+`.txt`, content, "utf8");
+    function writeFile(troupes) { // write the troupes to a file
+    const fs = require('fs'); // require the fs module
+    const filePath = prompt(`Enter file output name: `); // ask for the name of the file to be written to
+    const content = Array.from(troupes.values()) // convert the troupes to an array
+      .map((troupe) => troupe.detailedSummary()) // map the array to the detailed summary of the troupes
+      .join("\n"); // join the array to a new line
+    fs.writeFileSync(filePath+`.txt`, content, "utf8"); // write the content to the file
   }
-  function readFile() {
-    const fs = require('fs');
-    let filepath = prompt('Enter File Name (to be read): ')
+  function readFile() { // read the troupes from a file
+    const fs = require('fs'); // require the fs module  
+    let filepath = prompt('Enter File Name (to be read): ') // ask for the name of the file to be read
 
-    let troupeNames;
-    troupeNames = fs.readFileSync(`${filepath}.txt`, 'utf8').split('\r\n');
+    let troupeNames; 
+    troupeNames = fs.readFileSync(`${filepath}.txt`, 'utf8').split('\r\n'); // read the file and split the lines into an array
     
     // Now you are able to access the data here
-    for (const element of troupeNames) {
-        console.log(element);
+    for (const element of troupeNames) { // loop through the array of troupes
+        console.log(element); // print the troupes
     }
   }
 

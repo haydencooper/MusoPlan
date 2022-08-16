@@ -31,15 +31,12 @@ const troupes = [];
       } else if (choice==6) {
       Functions.getHourlyRate(troupes)   // Deployment cost and Hourly Rate
       } else if (choice==7) {
-      // Detailed description of all saved troupes
-      Functions.writeFile(troupes)
+      Functions.writeFile(troupes)  // Write troupe descriptions to file
       } else if (choice==8) {
-        // Read troupe names from file
-      Functions.readFile()
+      Functions.readFile() // Read written troupe descriptions file
       } else if (choice==9) {
-        // Quit Program
-        break;
-        // Uknown input error, passed validation checks somehow too
+        break; // Quit Program
+        
       }
       choice = 0;
     }
