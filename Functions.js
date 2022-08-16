@@ -161,7 +161,6 @@ function tSummary (everyTroupe) {
   if (!everyTroupe) {
   }
   const troupeNames = everyTroupe.map((troupes) => {return troupes.name})
-  console.log(JSON.stringify(troupeNames, null, ', '));
   let inputTroupe = "";
   while (true) {
     if (troupeNames.includes(inputTroupe)) {
@@ -177,24 +176,42 @@ function tSummary (everyTroupe) {
   }
 }
 
-function dTroupeSummary(troupe) {
-   return `\
-   ${summariseTroupe(troupe)}
-   Musician Introduction: 
-   ${troupe.getMusicianIntroductions()}`
+function detailedSummary (everyTroupe) {
+  if (!everyTroupe) {
+  }
+  const troupeNames = everyTroupe.map((troupes) => {return troupes.name})
+  let inputTroupe = "";
+  while (true) {
+    if (troupeNames.includes(inputTroupe)) {
+      for (let i = 0; i < everyTroupe.length; i++) {
+        if (everyTroupe[i].name === inputTroupe) {
+          console.log(everyTroupe[i].detailedSummary());
+          return
+        }
+      }
+    } else {
+      inputTroupe = prompt("Enter Troupe Name: ");
+    }
+  }
 }
 
-function getHourlyRate() {
-  return this.musicians.length === 0
-  ? 0
-  : this.musicians
-      .map((musician) => {
-        return musician.hourlyRate;
-      })
-      .reduce((previousValue, currentValue) => {
-        return previousValue + currentValue;
-      });
+function getHourlyRate(everyTroupe) {
+  if (!everyTroupe) {
+  }
+  const troupeNames = everyTroupe.map((troupes) => {return troupes.name})
+  let inputTroupe = "";
+  while (true) {
+    if (troupeNames.includes(inputTroupe)) {
+      for (let i = 0; i < everyTroupe.length; i++) {
+        if (everyTroupe[i].name === inputTroupe) {
+          console.log(everyTroupe[i].getHourlyRate());
+          return
+        }
+      }
+    } else {
+      inputTroupe = prompt("Enter Troupe Name: ");
+    }
+  }
 }
 
-
-module.exports = {createMusician, createTroupe, addMusicianToTroupe, tSummary, dTroupeSummary, getHourlyRate}; // export the functions so they can be used in other files
+module.exports = {createMusician, createTroupe, addMusicianToTroupe, tSummary, detailedSummary, getHourlyRate}; // export the functions so they can be used in other files

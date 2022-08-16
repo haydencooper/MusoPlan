@@ -30,10 +30,10 @@ const troupes = [];
         Functions.tSummary(troupes)
       } else if (choice==5) {
         // Detailed description - troupe
-        Functions.dTroupeSummary(Troupe);
+        Functions.detailedSummary(troupes);
       } else if (choice==6) {
         // Calc cost deploying troupe and hours
-        Functions.getHourlyRate()
+        Functions.getHourlyRate(troupes)
 
       } else if (choice==7) {
         // Read troupe names from file
