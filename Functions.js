@@ -157,23 +157,26 @@ function addMusicianToTroupe(everyMusician, everyTroupe) {
 
 
 
-function summariseTroupe(troupes) { // everyTroupe is an array of Troupe objects
-  if (troupes.musicians.length === 0) { // if there are no troupes, return an error message
-    return `\
-    Troupe Name: ${troupe.name}
-    Number of Musicians: 0
-    Rate of the Troupe: ${troupe.getTroupeRate()}
-    Genre of the Troupe ${troupe.genre}
-    Minimum Duration: ${troupe.duration}`;
+function tSummary (everyTroupe) {
+  if (!everyTroupe) {
   }
-  return `\
-  Troupe Name: ${troupe.name}
-  Number of Musicians: ${troupe.getMusicianCount()}
-  Rate of the Troupe: ${troupe.getTroupeRate()}
-  Genre of the Troupe ${troupe.genre}
-  Minimum Duration: ${troupe.duration}`;
-
+  const troupeNames = everyTroupe.map((troupes) => {return troupes.name})
+  console.log(JSON.stringify(troupeNames, null, ', '));
+  let inputTroupe = "";
+  while (true) {
+    if (troupeNames.includes(inputTroupe)) {
+      for (let i = 0; i < everyTroupe.length; i++) {
+        if (everyTroupe[i].name === inputTroupe) {
+          console.log(everyTroupe[i].overviewSummary());
+          return
+        }
+      }
+    } else {
+      inputTroupe = prompt("Enter Troupe Name: ");
+    }
+  }
 }
+
 function dTroupeSummary(troupe) {
    return `\
    ${summariseTroupe(troupe)}
@@ -194,4 +197,4 @@ function getHourlyRate() {
 }
 
 
-module.exports = {createMusician, createTroupe, addMusicianToTroupe, summariseTroupe, dTroupeSummary, getHourlyRate}; // export the functions so they can be used in other files
+module.exports = {createMusician, createTroupe, addMusicianToTroupe, tSummary, dTroupeSummary, getHourlyRate}; // export the functions so they can be used in other files

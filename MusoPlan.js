@@ -3,7 +3,7 @@
 const ps=require('prompt-sync');
 const prompt=ps();
 const Functions = require("./Functions.js")
-const {Troupe} = require("./classes/Troupe")
+const {Troupe} = require("./classes/Troupe");
 let choice = 0;
 const musicians = [];
 const troupes = [];
@@ -27,10 +27,10 @@ const troupes = [];
         Functions.addMusicianToTroupe(musicians,troupes);
       } else if (choice==4) {
         // Summary - troupe
-        Functions.summariseTroupe(); // Provide a summary of a troupe
+        Functions.tSummary(troupes)
       } else if (choice==5) {
         // Detailed description - troupe
-        Functions.dTroupeSummary(troupe);
+        Functions.dTroupeSummary(Troupe);
       } else if (choice==6) {
         // Calc cost deploying troupe and hours
         Functions.getHourlyRate()
