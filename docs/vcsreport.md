@@ -2,7 +2,7 @@
 
 ## VCS Investigated (Git)
 
-###  Benefits
+### **Benefits**
   
   Faster releases
   Simultaneous development
@@ -10,7 +10,7 @@
   Built-in integration
   Offline working
 
-### How GitHub fits the organisational requirements
+### **How GitHub fits the organisational requirements**
   
   GitHub is the number one distributed version control system in the world and familiar to almost every expert and organisation. They are committed to developing the best supporting ecosystems, making it the perfect version control system for this project.
 
@@ -20,7 +20,7 @@
 
   GitHub automatically creates README.md files when initalising a repository.
 
-### Git Installation
+### **Git Installation**
   
   Git installation is a simple process.
   
@@ -32,7 +32,7 @@
 
   Personally, I did not run into any installation errors. If you are experiencing an error/failure there is a wealth of solved issues on websites like StackOverflow and Reddit to help troubleshoot problems.
 
-### Configuration
+### **Configuration**
   
   You can configure your committer/author Name & Email globally by using the --global command. This will change all of your future commits to use the given information.
 
@@ -44,6 +44,6 @@
   $ git config user.name "John Doe"
   $ git config user.email "john@doe.org"
 
-### Disruptions
+### **Disruptions**
   
   While the Git team provides you with a relatively risk-free way to install and use their VCS, sometimes, software can fail due to an unexpected error. If this is the case, reinstallation is more often than not a straight forward fix. Git does not change anything on an Operating System level, so it will rarely, if ever, solely be the cause of a disruption.
