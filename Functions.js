@@ -98,21 +98,25 @@ function createTroupe() { // create a new troupe object
   }
   switch (genre) { // switch statement to create the appropriate troupe object based on the genre
     case "1":
-      // Guitarist
+      // Rock Troupe
+      console.log('Successfully created Rock Troupe!')
       return new Troupe(
         name,
         duration,
         'Rock'
         );
+        
     case "2":
-      // Bass
+      // Jazz Troupe
+      console.log('Successfully created Jazz Troupe!')
       return new Troupe(
         name,
         duration,
         'Jazz'
         );
     case "3":
-      // Drums
+      // Pop Troupe
+      console.log('Successfully created Pop Troupe!')
       return new Troupe(
         name,
         duration,
@@ -139,7 +143,8 @@ function addMusicianToTroupe(everyMusician, everyTroupe) {
             for(let x = 0; x < everyTroupe.length; x++) {
               if(everyTroupe[x].name === userInputTroupeName) {
                 everyTroupe[x].assignedMusicians.push(everyMusician[i]); // add the musician to the troupe
-                return;
+                return console.log("Successfully added " + everyMusician[i].fullName + " to " + everyTroupe[x].name);
+
               }
 
             }
