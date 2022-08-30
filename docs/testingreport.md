@@ -62,3 +62,7 @@
 | '4' 'Haydon's Troupe'  | 'Enter Troupe Name: '        | 'Enter Troupe Name: '     |
 
 
+## Modifications
+
+All expected outputs match the actual outputs thus no modifications will be needed.
+
