@@ -40,9 +40,14 @@ No methods included as all functionalities are in Functions.js file
 
 # Class Relationships
 
-* Musician (parent class, no inheritence)
-* Troupe (parent class, no inheritence)
-* Bassist, Guitarist, Flautist, Percussionist (inherit from Musician)
+* Musician
+  * Parent class
+  * All child classes inherit values from Musician and then create the chosen object based on instrument
+* Troupe
+  * Regular class as it has no children
+  * Class aggregation occurs within the Troupe class as it contains Musician objects inside its assignedMusicians array
+* Bassist, Guitarist, Flautist, Percussionist
+  * Child classes (inheritance from Musician)
 
 # Program Inputs and Outputs
 
