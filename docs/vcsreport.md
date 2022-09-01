@@ -1,5 +1,32 @@
 # VCS Report
 
+## VCS Investigated (SVN & CVS)
+
+## CVS
+
+CVS or Concurrent Version System has been around for decades and utilises a "checking" system. Developers can "check out" what they want to work on and then "check in" their changes.
+
+Originally, CVS used a first come, first serve system where developers must check in their changes before others to make sure they weren't beaten.
+
+The biggest benefit of implementing CVS is the longevity behind the software, making it "mature technology"
+
+There are more cons than benefits to CVS, such as security risks from legacy links to files and cost effectiveness, as CVS is not designed for long-term branching.
+
+## SVN
+
+SVN or Apache Subversion was created as an alternative Version Control System to CVS.
+
+Many developers have made the switch to SVN as it is still open source and free like CVS, and improves upon many of the same features.
+
+Pros of SVN include it being a newer system than CVS, now including atomic operations and being cheaper to branch. There are also a wide choice of plugins for IDEs such as VS Code.
+
+Cons include still containing bugs that CVS had, being a centralised VCS and having a slower comparitive speed to other VCS such as Git.
+
+### Summary
+
+For the reasons listed above and more, I believe that Git fills all organisational requirements and is the ideal Version Control System to aid in developing and implementing MusoPlan moving forward.
+
+
 ## VCS Investigated (Git)
 
 ### **Benefits**
