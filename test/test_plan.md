@@ -12,7 +12,6 @@ There will be no edge test cases in this report and no defects and/or modifcatio
 
 ## Manual Testing
 
-
 **Create A Musician**
 
 **Identifier**: CreateMusicianTest1
