@@ -7,11 +7,22 @@ const { Troupe } = require("../classes/Troupe");
 const Functions = require("../Functions.js")
 
 
-
 test('validation of musician name input', () => {
   const hayden = new Musician()
   hayden.fullName = "Hayden"
   expect(hayden.getfullName()).toBe("Hayden");
+})
+
+test('validation of incorrect musician name input, below 3', () => {
+  const hayden = new Musician()
+  hayden.fullName = "Ha"
+  expect(hayden.getfullName()).toBe("Ha");
+})
+
+test('validation of incorrect musician name input, above 30', () => {
+  const hayden = new Musician()
+  hayden.fullName = "HaydenWilliamCooperWrongNameInput"
+  expect(hayden.getfullName()).toBe("HaydenWilliamCooperWrongNameInput");
 })
 
 test('validation of musician hourly rate input', () => {
@@ -20,22 +31,53 @@ test('validation of musician hourly rate input', () => {
   expect(hayden.gethourlyRate()).toBe(60);
 })
 
+test('validation of incorrect musician hourly rate input, under 50', () => {
+  const hayden = new Musician()
+  hayden.hourlyRate = 49;
+  expect(hayden.gethourlyRate()).toBe(49);
+})
+
+
 test('validation of musician experience input', () => {
   const hayden = new Musician()
   hayden.yearsPlaying = 20;
   expect(hayden.getYearsPlaying()).toBe(20);
 })
 
-test('validation of troupe name input', () => {
+test('validation of incorrect musician experience input, negative input', () => {
+  const hayden = new Musician()
+  hayden.yearsPlaying = -1;
+  expect(hayden.getYearsPlaying()).toBe(-1);
+})
+
+test('validation of invalid troupe name input, less than 3', () => {
   const mytroupe = new Troupe()
-  mytroupe.troupeName = "My Troupe"
-  expect(mytroupe.getTroupeName()).toBe("My Troupe");
+  mytroupe.troupeName = "My"
+  expect(mytroupe.getTroupeName()).toBe("My");
+})
+
+test('validation of troupe name input, more than 30', () => {
+  const mytroupe = new Troupe()
+  mytroupe.troupeName = "Incorrect Troupe Name 30 Characters"
+  expect(mytroupe.getTroupeName()).toBe("Incorrect Troupe Name 30 Characters");
 })
 
 test('validation of troupe minimum duration input', () => {
   const mytroupe = new Troupe()
-  mytroupe.duration = 3
-  expect(mytroupe.getMinDuration()).toBe(3);
+  mytroupe.minDuration = 3;
+  expect(mytroupe.getminDuration()).toBe(3);
+})
+
+test('validation of invalid troupe minimum duration input, more than 3', () => {
+  const mytroupe = new Troupe()
+  mytroupe.minDuration = 10;
+  expect(mytroupe.getminDuration()).toBe(10);
+})
+
+test('validation of invalid troupe minimum duration input, less than 3', () => {
+  const mytroupe = new Troupe()
+  mytroupe.minDuration = .3;
+  expect(mytroupe.getminDuration()).toBe(.3);
 })
 
 test('validation of print musician introduction function', () => {
